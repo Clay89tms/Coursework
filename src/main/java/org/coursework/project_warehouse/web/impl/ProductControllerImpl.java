@@ -22,16 +22,21 @@ public class ProductControllerImpl implements ProductController {
     public ModelAndView viewMenu(@ModelAttribute(name = "product") ProductEntity product) {
         var allProducts = repository.findAll();
 
-        ModelAndView modelAndView = new ModelAndView("menu.jsp");
+        ModelAndView modelAndView = new ModelAndView("menu.html");
         modelAndView.addObject("allProduct", allProducts);
 
         return modelAndView;
     }
 
-    @PostMapping
+    @PostMapping(name = "/add")
     public String addProduct(ProductEntity product) {
         repository.save(product);
         return "redirect:/";
+    }
+
+    @GetMapping(name = "/addnew")
+    public ModelAndView addNewProduct(){
+        return new ModelAndView("tabelAddProduct.html");
     }
 
 }

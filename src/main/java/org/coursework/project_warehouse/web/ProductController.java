@@ -6,6 +6,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface ProductController {
 
-    public ModelAndView viewMenu(@ModelAttribute(name = "product") ProductEntity product);
-    public String addProduct(ProductEntity product);
+//    public ModelAndView viewMenu(@ModelAttribute(name = "product") ProductEntity product);
+//    public String addProduct(ProductEntity product);
 }

@@ -12,14 +12,14 @@ import lombok.extern.apachecommons.CommonsLog;
 //@Table( name = "adCharacteristics")
 public class CharacteristicsEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    private String name;
-
-    @Column(name = "length,sm")
-    private Integer length;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer id;
+//
+//    private String name;
+//
+//    @Column(name = "length,sm")
+//    private Integer length;
 
 
 }

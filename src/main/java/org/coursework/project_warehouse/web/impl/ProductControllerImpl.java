@@ -19,8 +19,8 @@ public class ProductControllerImpl {
 
     private final ProductRepository repository;
 
-    @GetMapping
-    public ModelAndView viewMenu(@ModelAttribute(name = "product") ProductEntity product) {
+    @GetMapping("/menu")
+    public ModelAndView viewMenu(@ModelAttribute(name = "newproduct") ProductEntity product) {
         var allProducts = repository.findAll();
 
         ModelAndView modelAndView = new ModelAndView("menu.html");
@@ -29,15 +29,17 @@ public class ProductControllerImpl {
         return modelAndView;
     }
 
-    @PostMapping(name = "/add")
+    @PostMapping
     public String addProduct(ProductEntity product) {
         repository.save(product);
-        return "redirect:/";
+        return "redirect:/menu";
+
     }
 
-//    @PostMapping(name = "/new")
-//    public ModelAndView addNewProduct(@PathVariable(name = "id" , required = false) Integer id){
-//        return new ModelAndView("tabelAddProduct.html");
-//    }
+    @GetMapping
+    public ModelAndView addNewProduct(@ModelAttribute(name = "newproduct") ProductEntity product){
+        ModelAndView modelAndView = new ModelAndView("addnew.html");
+        return modelAndView;
+    }
 
 }

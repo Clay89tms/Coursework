@@ -14,7 +14,7 @@
         <div class="col-1">
             <h2 style="position: center">Menu</h2>
 <!--            <form method="get" action="/addnew">-->
-                <button>Add new<br/>product</button>
+                <a th:href="@{/addnew}"> <button>Add new<br/>product</button> </a>
 <!--            </form>-->
         </div>
         <div class="col-11">
@@ -34,11 +34,11 @@
                 </thead>
                 <tbody>
                 <tr th:each="productions: ${allProduct}">
-                    <td th:text="${productions.brand}"></td>
+                    <td th:text="${productions.manufacturer}"></td>
                     <td th:text="${productions.type}"></td>
                     <td th:text="${productions.name}"></td>
                     <td th:text="${productions.color}"></td>
-                    <td th:text="${productions.lenght}"></td>
+                    <td th:text="${productions.length}"></td>
                     <td th:text="${productions.outputPower}"></td>
                     <td th:text="${productions.quantity}"></td>
                     <td th:text="${productions.price}"></td>
@@ -49,6 +49,18 @@
 
         </div>
     </div>
+    <form method="post" th:action="@{/}" th:object="${newproduct}">
+        <input type="text" th:field="*{manufacturer}"><br/>
+        <input type="text" th:field="*{type}"><br/>
+        <input type="text" th:field="*{name}"><br/>
+        <input type="text" th:field="*{color}"><br/>
+        <input type="number" th:field="*{length}"><br/>
+        <input type="number" th:field="*{outputPower}"><br/>
+        <input type="number" th:field="*{quantity}"><br/>
+        <input type="number" th:field="*{price}"><br/>
+        <button>save</button>
+    </form>
+
 </div>
 
 

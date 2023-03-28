@@ -21,7 +21,7 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "brand")
+
     private String manufacturer;
     private String type;
     private String name;
@@ -30,7 +30,6 @@ public class ProductEntity {
     private Double price;
     private Integer outputPower;
     private String color;
-    @Column(name = "length,m")
     private Integer length;
 
 }

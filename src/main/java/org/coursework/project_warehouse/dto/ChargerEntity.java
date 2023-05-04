@@ -1,21 +1,22 @@
-package org.coursework.project_warehouse.Dto;
+package org.coursework.project_warehouse.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
 @Entity
-@Table(name = "cables")
-public class CableEntity {
+@Table(name = "chargers")
+public class ChargerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +25,8 @@ public class CableEntity {
     private String brand;
     private String vendor;
     private String name;
-    private Integer length;
+    private Integer power;
     private Integer quantity;
     private Double price;
+
 }

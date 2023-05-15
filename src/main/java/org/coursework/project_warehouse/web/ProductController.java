@@ -18,13 +18,17 @@ public class ProductController {
     private final ProductRepository repository;
 
     @GetMapping("/menu")
-    public ModelAndView viewMenu(@ModelAttribute(name = "newproduct") ProductEntity product) {
-        var allProducts = repository.findAll();
+    public String viewMenu (){
+        return "pages/menu.html";
 
-        ModelAndView modelAndView = new ModelAndView("menu.html");
-        modelAndView.addObject("allProduct", allProducts);
-
-        return modelAndView;
+//    @GetMapping("/menu")
+//    public ModelAndView viewMenu(@ModelAttribute(name = "newproduct") ProductEntity product) {
+//        var allProducts = repository.findAll();
+//
+//        ModelAndView modelAndView = new ModelAndView("menu.html");
+//        modelAndView.addObject("allProduct", allProducts);
+//
+//        return modelAndView;
     }
 
     @PostMapping

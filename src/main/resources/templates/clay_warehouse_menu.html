@@ -11,11 +11,13 @@
         .centre {
             text-align: center;
         }
+
         .menu {
             text-align: center;
             background-color: aqua;
         }
-        .claywarehouse{
+
+        .claywarehouse {
             text-align: center;
             color: brown;
         }
@@ -23,13 +25,17 @@
 
 </head>
 <body>
-<div class="row" style="background-color: aqua">
+
+<div class="row">
 
     <div class="col-1">
     </div>
 
     <div class="col-8">
-        <p><h3 class="claywarehouse"><a href="/menu">Clay Warehouse</a></h3></p>
+        <p>
+        <h3 class="claywarehouse"><a type="submit" th:href="@{/menu}">
+        Clay Warehouse</a></h3>
+        </p>
     </div>
 
     <div class="col-2" style="position: center">
@@ -40,6 +46,19 @@
         <p style="background-color: brown"> <h4>Basket</h4></p>
     </div>
 
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+
+    <div class="col-8">
+        <a th:href="@{/details/{id}(id=${car.id})}">
+        <button type="button" class="btn btn-success">Case</button>
+        <button type="button" class="btn btn-success">Cable</button>
+        <button type="button" class="btn btn-success">Charging</button>
+
+    </div>
 </div>
 
 

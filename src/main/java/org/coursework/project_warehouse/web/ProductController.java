@@ -18,8 +18,11 @@ public class ProductController {
     private final ProductRepository repository;
 
     @GetMapping("/menu")
-    public String viewMenu (){
+    public String viewMenu () {
         return "pages/menu.html";
+    }
+
+    @GetMapping("")
 
 //    @GetMapping("/menu")
 //    public ModelAndView viewMenu(@ModelAttribute(name = "newproduct") ProductEntity product) {
@@ -29,7 +32,7 @@ public class ProductController {
 //        modelAndView.addObject("allProduct", allProducts);
 //
 //        return modelAndView;
-    }
+//    }
 
     @PostMapping
     public String addProduct(ProductEntity product) {
@@ -48,6 +51,21 @@ public class ProductController {
     public ModelAndView addNewProduct(){
         ModelAndView modelAndView = new ModelAndView("clay_warehouse_menu.html");
         return modelAndView;
+    }
+
+    @GetMapping
+    public String viewCasePage(){
+        return "redirect:/casePage";
+    }
+
+    @GetMapping
+    public String viewCablePage(){
+        return "redirect:/cablePage";
+    }
+
+    @GetMapping
+    public String viewChargingPage(){
+        return "redirect:/chargingPage";
     }
 
 }

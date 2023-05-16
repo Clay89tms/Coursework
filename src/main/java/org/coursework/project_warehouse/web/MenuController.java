@@ -11,18 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @RequiredArgsConstructor
+
 @Controller
-@RequestMapping("/")
-public class ProductController {
+@RequestMapping("/menu")
+public class MenuController {
 
     private final ProductRepository repository;
 
-    @GetMapping("/menu")
-    public String viewMenu () {
+    @GetMapping
+    public String viewMenu() {
         return "pages/menu.html";
     }
 
-    @GetMapping("")
+
+
+
 
 //    @GetMapping("/menu")
 //    public ModelAndView viewMenu(@ModelAttribute(name = "newproduct") ProductEntity product) {
@@ -41,31 +44,31 @@ public class ProductController {
 
     }
 
-    @GetMapping
-    public ModelAndView addNewProduct(@ModelAttribute(name = "newproduct") ProductEntity product){
+    @GetMapping("old")
+    public ModelAndView addNewProduct(@ModelAttribute(name = "newproduct") ProductEntity product) {
         ModelAndView modelAndView = new ModelAndView("addnew.html");
         return modelAndView;
     }
 
     @GetMapping("/go")
-    public ModelAndView addNewProduct(){
+    public ModelAndView addNewProduct() {
         ModelAndView modelAndView = new ModelAndView("clay_warehouse_menu.html");
         return modelAndView;
     }
 
-    @GetMapping
-    public String viewCasePage(){
-        return "redirect:/casePage";
-    }
-
-    @GetMapping
-    public String viewCablePage(){
-        return "redirect:/cablePage";
-    }
-
-    @GetMapping
-    public String viewChargingPage(){
-        return "redirect:/chargingPage";
-    }
+//    @GetMapping
+//    public String viewCasePage() {
+//        return "redirect:/casePage";
+//    }
+//
+//    @GetMapping
+//    public String viewCablePage() {
+//        return "redirect:/cablePage";
+//    }
+//
+//    @GetMapping
+//    public String viewChargingPage() {
+//        return "redirect:/chargingPage";
+//    }
 
 }

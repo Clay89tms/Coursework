@@ -15,17 +15,20 @@ import javax.persistence.Table;
 @AllArgsConstructor
 
 @Entity
-@Table (name = "cables")
+@Table(name = "cables")
 public class CableEntity {
-// 1 Cable Ugreen type-C_to_type-C 1m 10$
+    // 1 Cable Ugreen type-C_to_type-C 1m 10$
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String type;
     private String brand;
-    private String vendor;
-    private String name;
+    private String function;
     private Integer length;
     private Integer quantity;
     private Double price;
+
+    public String getDescription() {
+        return type + " " + brand + " " + function + " " + length;
+    }
 }

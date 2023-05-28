@@ -9,42 +9,27 @@
 </head>
 <body>
 
-<div class="row">
 
-    <div class="col-1">
-    </div>
-
-    <div class="col-6">
-        <a href="menu.html"> <h3>CLay Warehouse</h3></a>
-    </div>
-
-    <div class="col-2">
-        LOGIN
-    </div>
-
-    <div class="col-2">
-        BASKET
-    </div>
-
+<div th:replace="pages/headwh :: Head">
 </div>
 
 <br/>
 <div class="row">
     <div class="col-1">
     </div>
-<!--кнопка для перехода в меню кабелей-->
+    <!--кнопка для перехода в меню кабелей-->
     <div class="col-1">
         <form action="/cable" method="get">
             <button type="submit" name="CABLE">CABLES</button>
         </form>
     </div>
-<!--кнопка для перехода в меню Чехлов-->
+    <!--кнопка для перехода в меню Чехлов-->
     <div class="col-1">
         <form action="/case" method="get">
             <button type="submit" name="CASE">CASES</button>
         </form>
     </div>
-<!--кнопка для перехода в меню зарядок-->
+    <!--кнопка для перехода в меню зарядок-->
     <div class="col-1">
         <form action="/charging" method="get">
             <button type="submit" name="CHARGING">CHARGINGS</button>

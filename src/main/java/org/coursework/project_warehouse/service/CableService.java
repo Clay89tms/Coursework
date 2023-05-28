@@ -18,4 +18,9 @@ public class CableService {
     public List<CableEntity> getAllCable(){
      return repository.findAll();
     }
+
+
+    public CableEntity save(CableEntity cable) {
+        return repository.save(cable);
+    }
 }

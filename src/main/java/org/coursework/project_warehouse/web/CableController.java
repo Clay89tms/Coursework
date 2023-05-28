@@ -5,6 +5,7 @@ import org.coursework.project_warehouse.dto.CableEntity;
 import org.coursework.project_warehouse.service.CableService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,8 +28,15 @@ public class CableController {
         return modelAndView;
     }
 
+    @GetMapping("/additional/add")
+    public String viewPageAddNewCable(@ModelAttribute(name = "newcable") CableEntity cable){
+    return "pages/additional/addNewCable.html";
+    }
+
+
     @PostMapping
     public String addNewCables(CableEntity cable) {
-        return "";
+        service.save(cable);
+        return "redirect:/cable/additional/add";
     }
 }

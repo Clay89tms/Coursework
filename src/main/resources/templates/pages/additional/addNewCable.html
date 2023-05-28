@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>Add New Cable MENU</title>
+</head>
+<body>
+
+<div th:replace="pages/headwh :: Head">
+</div>
+
+<br/>
+Add new cable page
+<br/><br/>
+
+
+<!--table add new cable-->
+<div class="container text-left">
+    <form method="post" th:action="@{/cable/}" th:object="${newcable}">
+        <div class="row">
+            <div class="col-1"><!--column 1-->
+                Type :
+            </div>
+            <div class="col-2">
+                <input type="text" th:field="*{type}"><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                Brand :
+            </div>
+            <div class="col-2">
+                <input type="text" th:field="*{brand}"><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                Function :
+            </div>
+            <div class="col-2">
+                <input type="text" th:field="*{function}"><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                Length :
+            </div>
+            <div class="col-2">
+                <input type="number" th:field="*{length}"><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                Quantity :
+            </div>
+            <div class="col-2">
+                <input type="number" th:field="*{quantity}"><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                Price :
+            </div>
+            <div class="col-2">
+                <input type="number" th:field="*{price}"><br/>
+            </div>
+        </div>
+        <br/>
+        <button>SAVE</button>
+    </form>
+</div>
+
+<a href="/cable">
+    <button type="submit" name="back"><-BACK</button>
+</a>
+
+<!--        <div class="col-1">-->
+<!--            type<br/>-->
+<!--            brand<br/>-->
+<!--            function<br/>-->
+<!--            length<br/>-->
+<!--            quantity<br/>-->
+<!--            price<br/>-->
+<!--        </div>-->
+
+<!--        <div class="col-3">-->
+<!--            :<input type="text" th:field="*{type}"><br/>-->
+<!--            :<input type="text" th:field="*{brand}"><br/>-->
+<!--            :<input type="text" th:field="*{function}"><br/>-->
+<!--            :<input type="number" th:field="*{length}"><br/>-->
+<!--            :<input type="number" th:field="*{quantity}"><br/>-->
+<!--            :<input type="number" th:field="*{price}"><br/><br/>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+<!--<br/><hr/>-->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <form method="post" th:action="@{/cable/}" th:object="${newcable}">-->
+<!--            <div class="row">-->
+<!--                <div class="col-1">-->
+<!--                    type<br/>-->
+<!--                    brand<br/>-->
+<!--                    function<br/>-->
+<!--                    length<br/>-->
+<!--                    quantity<br/>-->
+<!--                    price<br/>-->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+
+
+<!--                    <input type="text" th:field="*{type}"><br/>-->
+<!--                    <input type="text" th:field="*{brand}"><br/>-->
+<!--                    <input type="text" th:field="*{function}"><br/>-->
+<!--                    <input type="number" th:field="*{length}"><br/>-->
+<!--                    <input type="number" th:field="*{quantity}"><br/>-->
+<!--                    <input type="number" th:field="*{price}"><br/><br/>-->
+<!--                    <button>save</button>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </form>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+</html>

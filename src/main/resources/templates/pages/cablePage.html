@@ -5,18 +5,24 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
+        <title>Cable Page MENU</title>
     </head>
 <body>
+
+<div th:replace="pages/headwh :: Head">
+</div>
+
 <div class="row">
     <div class="col-2">
         search
     </div>
 
     <div class="col-10">
-
         <table class="table">
             <thead>
+            <a th:href="@{/cable/additional/add}">
+                <button type="button" class="btn btn-danger">Add new Cable</button>
+            </a>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Type</th>
@@ -38,14 +44,14 @@
                 <td th:text="${cable.length}"></td>
                 <td th:text="${cable.quantity}"></td>
                 <td th:text="${cable.price}"></td>
-                *
-                <td><a th:href="@{/details/{id}(id=${car.id})}">
-                    <button type="button" class="btn btn-warning">Edit</button>
-                </a></td>
-                <td><a th:href="@{/delete/{id}(id=${car.id})}">
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </a></td>
-                *
+<!--                *-->
+<!--                <td><a th:href="@{/details/{id}(id=${car.id})}">-->
+<!--                    <button type="button" class="btn btn-warning">Edit</button>-->
+<!--                </a></td>-->
+<!--                <td><a th:href="@{/delete/{id}(id=${car.id})}">-->
+<!--                    <button type="button" class="btn btn-danger">Delete</button>-->
+<!--                </a></td>-->
+<!--                *-->
             </tr>
 
             </tbody>
@@ -53,7 +59,7 @@
     </div>
 </div>
 Cable PAGE!
-
+<br/>
 
 <a href="/menu">
     <button type="submit" name="back"><-BACK</button>

@@ -1,5 +1,6 @@
 package org.coursework.project_warehouse.dto;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,10 +22,10 @@ public class CableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String type;
+    private String type = "Cable";
     private String brand;
     private String function;
-    private Integer length;
+    private Double length;
     private Integer quantity;
     private Double price;
 

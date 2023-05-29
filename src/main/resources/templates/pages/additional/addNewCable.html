@@ -21,11 +21,12 @@ Add new cable page
 <div class="container text-left">
     <form method="post" th:action="@{/cable/}" th:object="${newcable}">
         <div class="row">
-            <div class="col-1"><!--column 1-->
+            <div class="col-1">
                 Type :
             </div>
             <div class="col-2">
-                <input type="text" th:field="*{type}"><br/>
+                <b> <a style="color: brown"> Cable</a></b>
+                <input type="hidden" value="Cable" required th:field="*{type}"><br/>
             </div>
         </div>
         <div class="row">
@@ -33,7 +34,7 @@ Add new cable page
                 Brand :
             </div>
             <div class="col-2">
-                <input type="text" th:field="*{brand}"><br/>
+                <input type="text" required th:field="*{brand}"><br/>
             </div>
         </div>
         <div class="row">
@@ -41,7 +42,7 @@ Add new cable page
                 Function :
             </div>
             <div class="col-2">
-                <input type="text" th:field="*{function}"><br/>
+                <input type="text" required th:field="*{function}"><br/>
             </div>
         </div>
         <div class="row">
@@ -49,7 +50,7 @@ Add new cable page
                 Length :
             </div>
             <div class="col-2">
-                <input type="number" th:field="*{length}"><br/>
+                <input type="number" required value="0.15" step="0.01" min="0.15" th:field="*{length}"><br/>
             </div>
         </div>
         <div class="row">
@@ -57,7 +58,7 @@ Add new cable page
                 Quantity :
             </div>
             <div class="col-2">
-                <input type="number" th:field="*{quantity}"><br/>
+                <input type="number" required value="1" min="1" th:field="*{quantity}"><br/>
             </div>
         </div>
         <div class="row">
@@ -65,11 +66,11 @@ Add new cable page
                 Price :
             </div>
             <div class="col-2">
-                <input type="number" th:field="*{price}"><br/>
+                <input type="number" required value="0.01" step="0.01" min="0.01"th:field="*{price}"><br/>
             </div>
         </div>
         <br/>
-        <button>SAVE</button>
+        <button>ADD</button>
     </form>
 </div>
 

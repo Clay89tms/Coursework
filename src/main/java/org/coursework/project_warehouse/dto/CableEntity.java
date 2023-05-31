@@ -1,6 +1,5 @@
 package org.coursework.project_warehouse.dto;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Data
 @NoArgsConstructor
@@ -23,10 +24,15 @@ public class CableEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String type = "Cable";
+
     private String brand;
+    @NotBlank(message = "not Blank")
     private String function;
+
     private Double length;
+
     private Integer quantity;
+
     private Double price;
 
     public String getDescription() {

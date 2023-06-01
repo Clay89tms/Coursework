@@ -23,4 +23,17 @@ public class CableService {
     public CableEntity save(CableEntity cable) {
         return repository.save(cable);
     }
+
+    public void deleteCable(Integer id) {
+        CableEntity cableEntity = repository.findById(id).get();
+        repository.delete(cableEntity);
+    }
+
+    public CableEntity getCable(Integer id) {
+        CableEntity cableEntity = repository.findById(id).get();
+        return cableEntity;
+    }
+
+    public void updateCable(CableEntity cable) {
+    }
 }

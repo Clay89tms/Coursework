@@ -44,14 +44,27 @@
                 <td th:text="${cable.length}"></td>
                 <td th:text="${cable.quantity}"></td>
                 <td th:text="${cable.price}"></td>
-<!--                *-->
-<!--                <td><a th:href="@{/details/{id}(id=${car.id})}">-->
-<!--                    <button type="button" class="btn btn-warning">Edit</button>-->
-<!--                </a></td>-->
-<!--                <td><a th:href="@{/delete/{id}(id=${car.id})}">-->
-<!--                    <button type="button" class="btn btn-danger">Delete</button>-->
-<!--                </a></td>-->
-<!--                *-->
+                <!--                *-->
+                <!--                <td><a th:href="@{/details/{id}(id=${car.id})}">-->
+                <!--                    <button type="button" class="btn btn-warning">Edit</button>-->
+                <!--                </a></td>-->
+                <td>
+                    <form action="#" method="get" th:action="@{/cable/additional/edit}">
+                        <input type="hidden" name="id" th:value="*{cable.id}">
+                        <button type="submit" class="btn btn-warning">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="#" method="post" th:action="@{/cable/delete}">
+                        <input type="hidden" name="id" th:value="*{cable.id}">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+
+                    <!--                    <a th:href="@{/cable/delete}" th:value="*{cable.id}">-->
+                    <!--                        <button type="button" class="btn btn-danger">Delete</button>-->
+                    <!--                    </a>-->
+                </td>
+                <!--                *-->
             </tr>
 
             </tbody>

@@ -9,7 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
@@ -24,15 +26,16 @@ public class CableEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String type = "Cable";
-
+    @NotBlank(message = "Укажите производителя")
     private String brand;
-    @NotBlank(message = "not Blank")
+    @NotBlank(message = "Укажите фунцию ")
     private String function;
-
+    @NotNull(message = "Укажите длинну")
     private Double length;
-
+    @NotNull(message = "Укажите колличество")
+    @Min(value = 1, message = "минимальное значение = 1")
     private Integer quantity;
-
+    @NotNull(message = "укажите цену")
     private Double price;
 
     public String getDescription() {

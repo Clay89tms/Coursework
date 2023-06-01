@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <meta charset="UTF-8">
+  <title>Add New Cable MENU</title>
+</head>
+<body>
+
+<div th:replace="pages/headwh :: Head">
+</div>
+
+<br/>
+Add new cable page
+<br/><br/>
+
+
+<!--table add new cable-->
+<div class="container text-left">
+  <form action="#" method="post" th:action="@{/cable/edit}" th:object="${editCable}">
+    <div class="row">
+      <input type="hidden" th:field="*{id}">
+      <div class="col-1">
+        Type :
+      </div>
+      <div class="col-2">
+        <b> <a style="color: brown"> Cable</a></b>
+        <input type="hidden" value="Cable" th:field="*{type}"><br/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+        Brand :
+      </div>
+      <div class="col-4">
+        <input type="text" th:field="*{brand}">
+        <span th:if="${#fields.hasErrors('brand')}"
+              th:errors="*{brand}"> Изготовитель </span><br/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+        Function :
+      </div>
+      <div class="col-4">
+        <input type="text" th:field="*{function}">
+        <span th:if="${#fields.hasErrors('function')}"
+              th:errors="*{function}"> Функция </span><br/>
+      </div>
+      <br/>
+    </div>
+    <div class="row">
+      <div class="col-1">
+        Length :
+      </div>
+      <div class="col-4">
+        <input type="number" value="0.15" step="0.01" min="0.15" th:field="*{length}">
+        <span th:if="${#fields.hasErrors('length')}"
+              th:errors="*{length}"> Длинна </span><br/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+        Quantity :
+      </div>
+      <div class="col-4">
+        <input type="number" value="1" min="1" th:field="*{quantity}">
+        <span th:if="${#fields.hasErrors('quantity')}"
+              th:errors="*{quantity}"> Колличество </span><br/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+        Price :
+      </div>
+      <div class="col-4">
+        <input type="number" value="0.01" step="0.01" min="0.01" th:field="*{price}">
+        <span th:if="${#fields.hasErrors('price')}"
+              th:errors="*{price}"> Цена </span><br/>
+      </div>
+    </div>
+    <br/>
+    <button>ADD</button>
+  </form>
+</div>
+
+<a href="/cable">
+  <button type="submit" name="back"><-BACK</button>
+</a>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+</html>

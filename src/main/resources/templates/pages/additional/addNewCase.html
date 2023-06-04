@@ -5,7 +5,7 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <meta charset="UTF-8">
-    <title>Add New Cable MENU</title>
+    <title>Add New Case MENU</title>
 </head>
 <body>
 
@@ -13,20 +13,20 @@
 </div>
 
 <br/>
-Add new cable page
+Add new case page
 <br/><br/>
 
 
-<!--table add new cable-->
+<!--table add new case-->
 <div class="container text-left">
-    <form action="#" method="post" th:action="@{/cable/add}" th:object="${newCable}">
+    <form action="#" method="post" th:action="@{/case/add}" th:object="${newCase}">
         <div class="row">
             <div class="col-1">
                 Type :
             </div>
             <div class="col-2">
-                <b> <a style="color: brown"> Cable</a></b>
-                <input type="hidden" value="Cable" th:field="*{type}"><br/>
+                <b> <a style="color: brown"> Case</a></b>
+                <input type="hidden" value="Cable" required th:field="*{type}"><br/>
             </div>
         </div>
         <div class="row">
@@ -42,25 +42,25 @@ Add new cable page
         </div>
         <div class="row">
             <div class="col-1">
-                Function :
+                Device :
             </div>
             <div class="col-4">
-                <input type="text" th:field="*{function}">
+                <input type="text" th:field="*{device}">
                 <span style="color: brown"
-                      th:if="${#fields.hasErrors('function')}"
-                      th:errors="*{function}"> Функция </span><br/>
+                      th:if="${#fields.hasErrors('device')}"
+                      th:errors="*{device}"> Устройство </span><br/>
             </div>
             <br/>
         </div>
         <div class="row">
             <div class="col-1">
-                Length :
+                Color :
             </div>
             <div class="col-4">
-                <input type="number" value="0.5" step="0.5" min="0.5" th:field="*{length}">
+                <input type="text" th:field="*{color}">
                 <span style="color: brown"
-                      th:if="${#fields.hasErrors('length')}"
-                      th:errors="*{length}"> Длинна </span><br/>
+                      th:if="${#fields.hasErrors('color')}"
+                      th:errors="*{color}"> Цвет </span><br/>
             </div>
         </div>
         <div class="row">
@@ -87,7 +87,7 @@ Add new cable page
     </form>
 </div>
 
-<a href="/cable">
+<a href="/case">
     <button type="submit" name="back"><-BACK</button>
 </a>
 

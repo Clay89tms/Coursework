@@ -1,21 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <head>
+        <meta charset="UTF-8">
+        <title>Charging Page MENU</title>
+    </head>
 <body>
 
 <div th:replace="pages/headwh :: Head">
 </div>
 
+<div class="row">
+    <div class="col-2">
+        search
+    </div>
 
+    <div class="col-10">
+        <table class="table">
+            <thead>
+            <a th:href="@{/charging/additional/add}">
+                <button type="button" class="btn btn-danger">Add new Charging</button>
+            </a>
 
-Charging PAGE!!!!!
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Power</th>
+                <th scope="col">Color</th>
+                <th scope="col">Qu-ty</th>
+                <th scope="col">Price</th>
+            </tr>
+            </thead>
+            <tbody>
 
+            <tr th:each="charging : ${allCharging}">
+                <td th:text="${charging.id}"></td>
+                <td th:text="${charging.type}"></td>
+                <td th:text="${charging.brand}"></td>
+                <td th:text="${charging.power}"></td>
+                <td th:text="${charging.color}"></td>
+                <td th:text="${charging.quantity}"></td>
+                <td th:text="${charging.price}"></td>
+
+                <td>
+                    <form action="#" method="get" th:action="@{/charging/additional/edit}">
+                        <input type="hidden" name="id" th:value="*{charging.id}">
+                        <button type="submit" class="btn btn-warning">Edit</button>
+                    </form>
+                </td>
+
+                <td>
+                    <form action="#" method="post" th:action="@{/charging/delete}">
+                        <input type="hidden" name="id" th:value="*{charging.id}">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+Charging PAGE!
+<br/>
 
 <a href="/menu">
     <button type="submit" name="back"><-BACK</button>
 </a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
 </html>

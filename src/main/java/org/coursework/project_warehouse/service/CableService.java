@@ -15,12 +15,24 @@ public class CableService {
     private final CableRepository repository;
 
 
-    public List<CableEntity> getAllCable(){
-     return repository.findAll();
+    public List<CableEntity> getAllCable() {
+        return repository.findAll();
     }
 
 
     public CableEntity save(CableEntity cable) {
+        List<CableEntity> allCable = repository.findAll();
+        for (int i = 0; i < allCable.size(); i++) {
+            if (allCable.get(i).equals(cable)){
+                cable.setId(allCable.get(i).getId());
+                cable.setQuantity(cable.getQuantity() + allCable.get(i).getQuantity());
+                break;
+            }
+        }
+        return repository.save(cable);
+    }
+
+    public CableEntity editCable(CableEntity cable) {
         return repository.save(cable);
     }
 
@@ -32,8 +44,5 @@ public class CableService {
     public CableEntity getCable(Integer id) {
         CableEntity cableEntity = repository.findById(id).get();
         return cableEntity;
-    }
-
-    public void updateCable(CableEntity cable) {
     }
 }

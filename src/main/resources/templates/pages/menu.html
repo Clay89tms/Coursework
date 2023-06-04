@@ -9,7 +9,6 @@
 </head>
 <body>
 
-
 <div th:replace="pages/headwh :: Head">
 </div>
 
@@ -19,20 +18,27 @@
     </div>
     <!--кнопка для перехода в меню кабелей-->
     <div class="col-1">
+
         <form action="/cable" method="get">
-            <button type="submit" name="CABLE">CABLES</button>
+            <button type="submit" class="btn btn-outline-blue" name="CABLE">
+                <img src="/images/Cable.jpg" width="100" /><br/>CABLES
+            </button>
         </form>
     </div>
     <!--кнопка для перехода в меню Чехлов-->
     <div class="col-1">
         <form action="/case" method="get">
-            <button type="submit" name="CASE">CASES</button>
+            <button type="submit" class="btn btn-outline-blue" name="CASE">
+                <img src="/images/Case.jpg" height="100" /><br/>CASES
+            </button>
         </form>
     </div>
     <!--кнопка для перехода в меню зарядок-->
     <div class="col-1">
         <form action="/charging" method="get">
-            <button type="submit" name="CHARGING">CHARGINGS</button>
+            <button type="submit" class="btn btn-outline-blue" name="CHARGING">
+                <img src="/images/Charger.jpg" height="100" /><br/>CHARGINGS
+            </button>
         </form>
     </div>
 </div>

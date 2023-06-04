@@ -5,7 +5,7 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <meta charset="UTF-8">
-    <title>Add New Cable MENU</title>
+    <title>Add New Charging MENU</title>
 </head>
 <body>
 
@@ -13,13 +13,13 @@
 </div>
 
 <br/>
-Add new cable page
+Add new charging page
 <br/><br/>
 
 
-<!--table add new cable-->
+<!--table add new charging-->
 <div class="container text-left">
-    <form action="#" method="post" th:action="@{/cable/add}" th:object="${newCable}">
+    <form action="#" method="post" th:action="@{/charging/add}" th:object="${newCharging}">
         <div class="row">
             <div class="col-1">
                 Type :
@@ -42,25 +42,25 @@ Add new cable page
         </div>
         <div class="row">
             <div class="col-1">
-                Function :
+                Power :
             </div>
             <div class="col-4">
-                <input type="text" th:field="*{function}">
+                <input type="text" value="1" step="0.5" min="1" th:field="*{power}">
                 <span style="color: brown"
-                      th:if="${#fields.hasErrors('function')}"
-                      th:errors="*{function}"> Функция </span><br/>
+                      th:if="${#fields.hasErrors('power')}"
+                      th:errors="*{power}"> Мощность </span><br/>
             </div>
             <br/>
         </div>
         <div class="row">
             <div class="col-1">
-                Length :
+                Color :
             </div>
             <div class="col-4">
-                <input type="number" value="0.5" step="0.5" min="0.5" th:field="*{length}">
+                <input type="number" th:field="*{color}">
                 <span style="color: brown"
-                      th:if="${#fields.hasErrors('length')}"
-                      th:errors="*{length}"> Длинна </span><br/>
+                      th:if="${#fields.hasErrors('color')}"
+                      th:errors="*{color}"> Цвет </span><br/>
             </div>
         </div>
         <div class="row">
@@ -87,7 +87,7 @@ Add new cable page
     </form>
 </div>
 
-<a href="/cable">
+<a href="/charging">
     <button type="submit" name="back"><-BACK</button>
 </a>
 

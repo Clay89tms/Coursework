@@ -3,6 +3,8 @@ package org.coursework.project_warehouse.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -21,24 +24,43 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "cables")
 public class CableEntity {
-    // 1 Cable Ugreen type-C_to_type-C 1m 10$
+    // 1 Xiaomi cable type-C 1m
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String type = "Cable";
-    @NotBlank(message = "Укажите производителя")
+
+    @NotBlank(message = "Производителя ?")
     private String brand;
-    @NotBlank(message = "Укажите фунцию ")
+
+    @NotBlank(message = "Тип разъема ?")
     private String function;
-    @NotNull(message = "Укажите длинну")
+
+    @NotNull(message = "Длинна ?")
     private Double length;
-    @NotNull(message = "Укажите колличество")
-    @Min(value = 1, message = "минимальное значение = 1")
-    private Integer quantity;
-    @NotNull(message = "укажите цену")
+
+    @NotNull(message = "Колличество ?")
+    @Min(value = 0, message = "Минимум = 0")
+    private Integer quantity = 0;
+
+    @NotNull(message = "Цена ?")
     private Double price;
 
     public String getDescription() {
-        return type + " " + brand + " " + function + " " + length;
+        return brand + " " + type + " " + function + " " + length;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CableEntity that = (CableEntity) o;
+        return Objects.equals(type, that.type) && Objects.equals(brand, that.brand) && Objects.equals(function, that.function) && Objects.equals(length, that.length) && Objects.equals(price, that.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, brand, function, length, price);
     }
 }

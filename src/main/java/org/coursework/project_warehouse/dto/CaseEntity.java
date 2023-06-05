@@ -31,7 +31,7 @@ public class CaseEntity {
         @NotBlank(message = "Производитель ?")
         private String brand;
 
-        @NotBlank(message = "Для какого устройства ?")
+        @NotBlank(message = "Устройство ?")
         private String device;
 
         @NotBlank(message = "Цвет ?")

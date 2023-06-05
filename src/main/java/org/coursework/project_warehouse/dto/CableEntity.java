@@ -3,6 +3,7 @@ package org.coursework.project_warehouse.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
@@ -16,6 +17,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -31,7 +33,7 @@ public class CableEntity {
 
     private String type = "Cable";
 
-    @NotBlank(message = "Производителя ?")
+    @NotBlank(message = "Производитель ?")
     private String brand;
 
     @NotBlank(message = "Тип разъема ?")

@@ -5,7 +5,7 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <head>
         <meta charset="UTF-8">
-        <title>Charging Page MENU</title>
+        <title>Charger Page MENU</title>
     </head>
 <body>
 
@@ -20,12 +20,12 @@
     <div class="col-10">
         <table class="table">
             <thead>
-            <a th:href="@{/charging/additional/add}">
-                <button type="button" class="btn btn-danger">Add new Charging</button>
+            <a th:href="@{/charger/additional/add}">
+                <button type="button" class="btn btn-danger">Add new Charger</button>
             </a>
 
             <tr>
-                <th scope="col">#</th>
+<!--                <th scope="col">#</th>-->
                 <th scope="col">Type</th>
                 <th scope="col">Brand</th>
                 <th scope="col">Power</th>
@@ -36,25 +36,25 @@
             </thead>
             <tbody>
 
-            <tr th:each="charging : ${allCharging}">
-                <td th:text="${charging.id}"></td>
-                <td th:text="${charging.type}"></td>
-                <td th:text="${charging.brand}"></td>
-                <td th:text="${charging.power}"></td>
-                <td th:text="${charging.color}"></td>
-                <td th:text="${charging.quantity}"></td>
-                <td th:text="${charging.price}"></td>
+            <tr th:each="charger : ${allCharger}">
+<!--                <td th:text="${charging.id}"></td>-->
+                <td th:text="${charger.type}"></td>
+                <td th:text="${charger.brand}"></td>
+                <td th:text="${charger.power}"></td>
+                <td th:text="${charger.color}"></td>
+                <td th:text="${charger.quantity}"></td>
+                <td th:text="${charger.price}"></td>
 
                 <td>
-                    <form action="#" method="get" th:action="@{/charging/additional/edit}">
-                        <input type="hidden" name="id" th:value="*{charging.id}">
+                    <form action="#" method="get" th:action="@{/charger/additional/edit}">
+                        <input type="hidden" name="id" th:value="*{charger.id}">
                         <button type="submit" class="btn btn-warning">Edit</button>
                     </form>
                 </td>
 
                 <td>
-                    <form action="#" method="post" th:action="@{/charging/delete}">
-                        <input type="hidden" name="id" th:value="*{charging.id}">
+                    <form action="#" method="post" th:action="@{/charger/delete}">
+                        <input type="hidden" name="id" th:value="*{charger.id}">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-Charging PAGE!
+Charger PAGE!
 <br/>
 
 <a href="/menu">

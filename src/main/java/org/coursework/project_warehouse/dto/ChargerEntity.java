@@ -3,6 +3,7 @@ package org.coursework.project_warehouse.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -22,6 +24,11 @@ import javax.validation.constraints.NotNull;
 public class ChargerEntity {
     // 1 Huawei charger (power) 30(w)
     @Id
+//    @GeneratedValue(generator = "UUID")
+//    @GenericGenerator(
+//            name = "UUID",
+//            strategy = "org.hibernate.id.UUIDGenerator"
+//    )
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

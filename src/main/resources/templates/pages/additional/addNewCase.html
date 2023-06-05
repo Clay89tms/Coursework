@@ -69,6 +69,9 @@ Add new case page
             </div>
             <div class="col-4">
                 <input type="number" value="0" min="0" th:field="*{quantity}">
+                <span style="color: brown"
+                      th:if="${#fields.hasErrors('quantity')}"
+                      th:errors="*{quantity}"> Колличество </span><br/>
             </div>
         </div>
         <div class="row">

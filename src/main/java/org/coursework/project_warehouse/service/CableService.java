@@ -45,4 +45,5 @@ public class CableService {
         CableEntity cableEntity = repository.findById(id).get();
         return cableEntity;
     }
+
 }

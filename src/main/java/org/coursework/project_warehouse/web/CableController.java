@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -27,6 +28,14 @@ public class CableController {
     public ModelAndView viewMenuCables() {
         List<CableEntity> allCable = service.getAllCable();
         ModelAndView modelAndView = new ModelAndView("pages/cablePage.html");
+        modelAndView.addObject("allCable", allCable);
+        return modelAndView;
+    }
+
+    @GetMapping("/buyer")
+    public ModelAndView viewMenuCablesBuyer() {
+        List<CableEntity> allCable = service.getAllCable();
+        ModelAndView modelAndView = new ModelAndView("pages/buyerPages/cablePageBuyer.html");
         modelAndView.addObject("allCable", allCable);
         return modelAndView;
     }
@@ -57,7 +66,7 @@ public class CableController {
     }
 
     @GetMapping("/additional/edit")
-    public ModelAndView viewPageEditCable(Integer id) {
+    public ModelAndView viewPageEditCable(@RequestParam(name = "id") Integer id) {
         CableEntity cable = service.getCable(id);
         ModelAndView modelAndView = new ModelAndView("pages/additional/editCable.html");
         modelAndView.addObject("editCable", cable);

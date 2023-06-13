@@ -20,9 +20,9 @@
     <div class="col-10">
         <table class="table">
             <thead>
-            <a th:href="@{/cable/additional/add}">
-                <button type="button" class="btn btn-danger">Add new Cable</button>
-            </a>
+            <!--            <a th:href="@{/cable/additional/add}">-->
+            <!--                <button type="button" class="btn btn-danger">Add new Cable</button>-->
+            <!--            </a>-->
             <tr>
                 <!--                <th scope="col">#</th>-->
                 <th scope="col">Type</th>
@@ -37,27 +37,29 @@
             <tbody>
 
             <tr th:each="cable : ${allCable}">
-                <!--                <td th:text="${cable.id}"></td>-->
-                <td th:text="${cable.type}"></td>
-                <td th:text="${cable.brand}"></td>
-                <td th:text="${cable.function}"></td>
-                <td th:text="${cable.length}"></td>
-                <td th:text="${cable.quantity}"></td>
-                <td th:text="${cable.price}"></td>
+                <a th:if="${cable.quantity} > 0">
+                    <!--                <td th:text="${cable.id}"></td>-->
+                    <td th:text="${cable.type}"></td>
+                    <td th:text="${cable.brand}"></td>
+                    <td th:text="${cable.function}"></td>
+                    <td th:text="${cable.length}"></td>
+                    <td th:text="${cable.quantity}"></td>
+                    <td th:text="${cable.price}"></td>
+
+                    <td>
+                        <form action="#" method="post" th:action="@{/basket/buy}">
+                            <input type="hidden" name="id" th:value="*{cable.id}">
+                            <button type="submit" class="btn btn-success">BUY</button>
+                        </form>
+                    </td>
 
 
-                <td>
-                    <form action="#" method="get" th:action="@{/cable/additional/edit}">
-                        <input type="hidden" name="id" th:value="*{cable.id}">
-                        <button type="submit" class="btn btn-warning">Edit</button>
-                    </form>
-                </td>
-
-                <td>
-                    <form action="#" method="post" th:action="@{/cable/delete}">
-                        <input type="hidden" name="id" th:value="*{cable.id}">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+<!--                    <td>-->
+<!--                        <form action="#" method="post" th:action="@{/cable/delete}">-->
+<!--                            <input type="hidden" name="id" th:value="*{cable.id}">-->
+<!--                            <button type="submit" class="btn btn-danger">Delete</button>-->
+<!--                        </form>-->
+                </a>
                 </td>
             </tr>
             </tbody>

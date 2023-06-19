@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.coursework.project_warehouse.dto.BasketEntity;
+import org.coursework.project_warehouse.dto.CartEntity;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
@@ -14,15 +14,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -50,7 +46,7 @@ public class User
 
     @ToString.Exclude
     @OneToMany(mappedBy = "persons")
-    private List<BasketEntity> baskets;
+    private List<CartEntity> cart;
 
 //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {

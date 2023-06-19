@@ -47,18 +47,12 @@
                     <td th:text="${cable.price}"></td>
 
                     <td>
-                        <form action="#" method="post" th:action="@{/basket/buy}">
+                        <form action="#" method="post" th:action="@{/cart/buy}">
                             <input type="hidden" name="id" th:value="*{cable.id}">
                             <button type="submit" class="btn btn-success">BUY</button>
                         </form>
                     </td>
 
-
-<!--                    <td>-->
-<!--                        <form action="#" method="post" th:action="@{/cable/delete}">-->
-<!--                            <input type="hidden" name="id" th:value="*{cable.id}">-->
-<!--                            <button type="submit" class="btn btn-danger">Delete</button>-->
-<!--                        </form>-->
                 </a>
                 </td>
             </tr>

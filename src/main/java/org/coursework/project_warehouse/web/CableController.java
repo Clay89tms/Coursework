@@ -24,18 +24,12 @@ public class CableController {
 
     private final CableService service;
 
+    //Admin Controller
+
     @GetMapping
     public ModelAndView viewMenuCables() {
         List<CableEntity> allCable = service.getAllCable();
         ModelAndView modelAndView = new ModelAndView("pages/cablePage.html");
-        modelAndView.addObject("allCable", allCable);
-        return modelAndView;
-    }
-
-    @GetMapping("/buyer")
-    public ModelAndView viewMenuCablesBuyer() {
-        List<CableEntity> allCable = service.getAllCable();
-        ModelAndView modelAndView = new ModelAndView("pages/buyerPages/cablePageBuyer.html");
         modelAndView.addObject("allCable", allCable);
         return modelAndView;
     }
@@ -84,5 +78,15 @@ public class CableController {
             return "pages/additional/editCable.html";
         }
         return "redirect:/cable";
+    }
+
+    // User controller
+
+    @GetMapping("/buyer")
+    public ModelAndView viewMenuCablesBuyer() {
+        List<CableEntity> allCable = service.getAllCable();
+        ModelAndView modelAndView = new ModelAndView("pages/buyerPages/cablePageBuyer.html");
+        modelAndView.addObject("allCable", allCable);
+        return modelAndView;
     }
 }

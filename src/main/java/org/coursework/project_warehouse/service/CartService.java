@@ -5,10 +5,10 @@ import org.coursework.project_warehouse.dto.CableToCartEntity;
 import org.coursework.project_warehouse.dto.CartEntity;
 import org.coursework.project_warehouse.dto.CableEntity;
 import org.coursework.project_warehouse.model.User;
+import org.coursework.project_warehouse.repository.CableToCartRepository;
 import org.coursework.project_warehouse.repository.CartRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -17,51 +17,39 @@ import java.util.List;
 public class CartService {
 
     private final CartRepository cartRepository;
+    private final CableToCartRepository cableToCartRepository;
 
-    public CartEntity createOrFind(User person) {
+    public CartEntity createOrFindWorkCart(User person) {
 
         List<CartEntity> carts = person.getCart();
 
         if (carts.get(carts.size() - 1).getAStatus()) {
             return carts.get(carts.size() - 1);
         }
-            CartEntity newCart = CartEntity.builder()
-                    .persons(person)
-                    .build();
+        CartEntity newCart = CartEntity.builder()
+                .persons(person)
+                .aStatus(true)
+                .build();
         CartEntity cart = cartRepository.save(newCart);
 
         return cart;
 
-//        for (CartEntity cart : carts) {
-//            if (cart.getAStatus() == true) {
-//                return cart;
-//            } else {
-//                CartEntity newBasket = CartEntity.builder()
-//                        .persons(person)
-//                        .build();
-//            }
-//
-//        }
+    }
+
+    public CableToCartEntity setCable(CartEntity cart, CableEntity cable) {
+
+        if (cart.getCablesToCarts() != null) {
+            for (CableToCartEntity cableToCartEntity : cart.getCablesToCarts()) {
+                if (cableToCartEntity.getCable().getId().equals(cable.getId())) {
+                    cableToCartEntity.setQuantity(cableToCartEntity.getQuantity() + 1);
+                    return cableToCartRepository.save(cableToCartEntity);
+                }
+            }
+        }
+        CableToCartEntity cableToCart = new CableToCartEntity(null, 1, cable, cart);
+
+        return cableToCartRepository.save(cableToCart);
 
     }
 
-    public void setCable(CartEntity cart, CableEntity cable) {
-        List<CableToCartEntity> listCables;
-        if (cart.getCablesToCarts() == null) {
-            listCables = new ArrayList<>();
-        } else {
-                listCables = cart.getCablesToCarts();
-        }
-
-
-        cart.setCables(listCables);
-        cart.setDescription(cable.getDescription());
-        cart.setPrice(cable.getPrice());
-        if (cart.getQuantity() == null || cart.getQuantity() == 0) {
-            cart.setQuantity(1);
-        } else {
-            cart.setQuantity(cart.getQuantity() + 1);
-        }
-        cartRepository.save(cart);
-    }
 }

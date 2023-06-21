@@ -1,6 +1,7 @@
 package org.coursework.project_warehouse.web;
 
 import lombok.RequiredArgsConstructor;
+import org.coursework.project_warehouse.dto.CableEntity;
 import org.coursework.project_warehouse.dto.CaseEntity;
 import org.coursework.project_warehouse.service.CaseService;
 import org.springframework.stereotype.Controller;
@@ -74,5 +75,13 @@ public class CaseController {
             return "pages/additional/editCase.html";
         }
         return "redirect:/case";
+    }
+
+    @GetMapping("/buyer")
+    public ModelAndView viewMenuCaseBuyer() {
+        List<CaseEntity> allCase = service.getAllCase();
+        ModelAndView modelAndView = new ModelAndView("pages/buyerPages/casePageBuyer.html");
+        modelAndView.addObject("allCase", allCase);
+        return modelAndView;
     }
 }

@@ -1,6 +1,7 @@
 package org.coursework.project_warehouse.web;
 
 import lombok.RequiredArgsConstructor;
+import org.coursework.project_warehouse.dto.CableEntity;
 import org.coursework.project_warehouse.dto.CaseEntity;
 import org.coursework.project_warehouse.dto.ChargerEntity;
 import org.coursework.project_warehouse.service.ChargerService;
@@ -75,5 +76,13 @@ public class ChargerController {
             return "pages/additional/editCharger.html";
         }
         return "redirect:/charger";
+    }
+
+    @GetMapping("/buyer")
+    public ModelAndView viewMenuChargerBuyer() {
+        List<ChargerEntity> allCharger = service.getAllCharger();
+        ModelAndView modelAndView = new ModelAndView("pages/buyerPages/chargerPageBuyer.html");
+        modelAndView.addObject("allCharger", allCharger);
+        return modelAndView;
     }
 }

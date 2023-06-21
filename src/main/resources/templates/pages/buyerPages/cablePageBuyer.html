@@ -20,11 +20,7 @@
     <div class="col-10">
         <table class="table">
             <thead>
-            <!--            <a th:href="@{/cable/additional/add}">-->
-            <!--                <button type="button" class="btn btn-danger">Add new Cable</button>-->
-            <!--            </a>-->
             <tr>
-                <!--                <th scope="col">#</th>-->
                 <th scope="col">Type</th>
                 <th scope="col">Brand</th>
                 <th scope="col">Function</th>
@@ -32,13 +28,11 @@
                 <th scope="col">Qu-ty</th>
                 <th scope="col">Price</th>
             </tr>
-
             </thead>
             <tbody>
 
             <tr th:each="cable : ${allCable}">
                 <a th:if="${cable.quantity} > 0">
-                    <!--                <td th:text="${cable.id}"></td>-->
                     <td th:text="${cable.type}"></td>
                     <td th:text="${cable.brand}"></td>
                     <td th:text="${cable.function}"></td>
@@ -47,14 +41,13 @@
                     <td th:text="${cable.price}"></td>
 
                     <td>
-                        <form action="#" method="post" th:action="@{/cart/buy}">
+                        <form action="#" method="post" th:action="@{/cart/toCart}">
                             <input type="hidden" name="id" th:value="*{cable.id}">
-                            <button type="submit" class="btn btn-success">BUY</button>
+                            <input type="hidden" name="type" th:value="*{cable.type}">
+                            <button type="submit" class="btn btn-success">toCart</button>
                         </form>
                     </td>
-
                 </a>
-                </td>
             </tr>
             </tbody>
         </table>

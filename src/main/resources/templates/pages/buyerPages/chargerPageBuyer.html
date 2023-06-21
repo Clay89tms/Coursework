@@ -20,12 +20,7 @@
     <div class="col-10">
         <table class="table">
             <thead>
-            <a th:href="@{/charger/additional/add}">
-                <button type="button" class="btn btn-danger">Add new Charger</button>
-            </a>
-
             <tr>
-
                 <th scope="col">Type</th>
                 <th scope="col">Brand</th>
                 <th scope="col">Power</th>
@@ -37,26 +32,22 @@
             <tbody>
 
             <tr th:each="charger : ${allCharger}">
-                <td th:text="${charger.type}"></td>
-                <td th:text="${charger.brand}"></td>
-                <td th:text="${charger.power}"></td>
-                <td th:text="${charger.color}"></td>
-                <td th:text="${charger.quantity}"></td>
-                <td th:text="${charger.price}"></td>
+                <a th:if="${charger.quantity} > 0">
+                    <td th:text="${charger.type}"></td>
+                    <td th:text="${charger.brand}"></td>
+                    <td th:text="${charger.power}"></td>
+                    <td th:text="${charger.color}"></td>
+                    <td th:text="${charger.quantity}"></td>
+                    <td th:text="${charger.price}"></td>
 
-                <td>
-                    <form action="#" method="get" th:action="@{/charger/additional/edit}">
-                        <input type="hidden" name="id" th:value="*{charger.id}">
-                        <button type="submit" class="btn btn-warning">Edit</button>
-                    </form>
-                </td>
-
-                <td>
-                    <form action="#" method="post" th:action="@{/charger/delete}">
-                        <input type="hidden" name="id" th:value="*{charger.id}">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
+                    <td>
+                        <form action="#" method="post" th:action="@{/cart/toCart}">
+                            <input type="hidden" name="id" th:value="*{charger.id}">
+                            <input type="hidden" name="type" th:value="*{charger.type}">
+                            <button type="submit" class="btn btn-success">toCart</button>
+                        </form>
+                    </td>
+                </a>
             </tr>
             </tbody>
         </table>

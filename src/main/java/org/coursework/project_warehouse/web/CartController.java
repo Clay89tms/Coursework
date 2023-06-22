@@ -13,6 +13,8 @@ import org.coursework.project_warehouse.service.CartService;
 import org.coursework.project_warehouse.service.CableService;
 import org.coursework.project_warehouse.service.CaseService;
 import org.coursework.project_warehouse.service.ChargerService;
+import org.coursework.project_warehouse.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class CartController {
 
     private final UserRepository userRepository;
+    private final UserService userService;
     private final CartService cartService;
     private final CableService cableService;
     private final CaseService caseService;
@@ -36,8 +39,12 @@ public class CartController {
     @PostMapping("/toCart")
     public ModelAndView buyCable(@RequestParam(name = "id") Integer id, @RequestParam(name = "type") String type) {
         ModelAndView modelAndView = new ModelAndView();
+        User persona = userService.getPersona();
+
+//        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
 //
-        User persona = userRepository.findByUsername("admin");
+//        User persona = userRepository.findByUsername(username);
         CartEntity cart = cartService.createOrFindWorkCart(persona);
 //
 
@@ -65,7 +72,9 @@ public class CartController {
     public ModelAndView viewMenuCart() {
         ModelAndView modelAndView = new ModelAndView("pages/cart.html");
 //
-        User persona = userRepository.findByUsername("admin");
+//        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//        User persona = userRepository.findByUsername("admin");
+        User persona = userService.getPersona();
         CartEntity cart = cartService.createOrFindWorkCart(persona);
 //
         modelAndView = cartService.createListCart(cart, modelAndView);
@@ -76,7 +85,9 @@ public class CartController {
     @PostMapping("/remove")
     public String removeProduct(@RequestParam(name = "id") Integer id, @RequestParam(name = "type") String type) {
 //
-        User persona = userRepository.findByUsername("admin");
+//        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//        User persona = userRepository.findByUsername("admin");
+        User persona = userService.getPersona();
         CartEntity cart = cartService.createOrFindWorkCart(persona);
 //
         cartService.removeProduct(cart, id, type);
@@ -86,8 +97,9 @@ public class CartController {
     @PostMapping("/buy")
     public String buyOrder() {
 
-        User persona = userRepository.findByUsername("admin");
-
+//        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//        User persona = userRepository.findByUsername("admin");
+        User persona = userService.getPersona();
         CartEntity cart = cartService.createOrFindWorkCart(persona);
 
         cartService.doOrder(cart);
@@ -98,7 +110,9 @@ public class CartController {
     public ModelAndView viewAllOrder() {
         ModelAndView modelAndView = new ModelAndView("pages/allOrders.html");
 
-        User persona = userRepository.findByUsername("admin");
+//        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//        User persona = userRepository.findByUsername("admin");
+        User persona = userService.getPersona();
         modelAndView = cartService.getAllOrders(persona, modelAndView);
 
         return modelAndView;

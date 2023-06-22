@@ -1,22 +1,29 @@
 <div th:fragment="Head">
 
-  <div class="row" style="background-color: aquamarine">
+    <div class="row" style="background-color: aquamarine">
 
-    <div class="col-1">
+        <div class="col-1">
+            <a href="/menu/admin"><h3>A</h3></a>
+        </div>
+
+        <div class="col-7" style="text-align: center">
+            <a href="/menu"><h3>Clay Warehouse</h3></a>
+        </div>
+
+        <div class="col-1">
+            <a href="/menu/loginpage"><h4>Login</h4></a>
+        </div>
+
+        <div class="col-1">
+            <form method="post" th:action="@{/try-logout}">
+                <button type="submit" class="btn btn-link">LogOut</button>
+            </form>
+        </div>
+
+        <div class="col-1" style="text-align: center">
+            <a style="text-align: center" href="/cart"><h3>Cart</h3></a>
+        </div>
+
     </div>
-
-    <div class="col-6">
-      <a href="/menu"> <h3>Clay Warehouse</h3></a>
-    </div>
-
-    <div class="col-2">
-      LOGIN
-    </div>
-
-    <div class="col-2" style="text-align: center">
-      <a href="/cart"> <h3>BASKET</h3></a>
-    </div>
-
-  </div>
 
 </div>

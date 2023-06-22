@@ -1,14 +1,23 @@
 package org.coursework.project_warehouse.web;
 
 import lombok.RequiredArgsConstructor;
+import org.coursework.project_warehouse.dto.CableEntity;
 import org.coursework.project_warehouse.dto.ProductEntity;
+import org.coursework.project_warehouse.model.User;
 import org.coursework.project_warehouse.repository.ProductRepository;
+import org.coursework.project_warehouse.repository.UserRepository;
+import org.coursework.project_warehouse.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 
@@ -16,59 +25,42 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/menu")
 public class MenuController {
 
-    private final ProductRepository repository;
+    private final UserService service;
+
 
     @GetMapping
     public String viewMenu() {
         return "pages/menu.html";
     }
 
-
-
-
-
-//    @GetMapping("/menu")
-//    public ModelAndView viewMenu(@ModelAttribute(name = "newproduct") ProductEntity product) {
-//        var allProducts = repository.findAll();
-//
-//        ModelAndView modelAndView = new ModelAndView("menu.html");
-//        modelAndView.addObject("allProduct", allProducts);
-//
-//        return modelAndView;
-//    }
-
-    @PostMapping
-    public String addProduct(ProductEntity product) {
-        repository.save(product);
-        return "redirect:/menu";
-
+    @GetMapping("/admin")
+    public String viewMenuAdmin() {
+        return "pages/menuAdmin.html";
     }
 
-    @GetMapping("old")
-    public ModelAndView addNewProduct(@ModelAttribute(name = "newproduct") ProductEntity product) {
-        ModelAndView modelAndView = new ModelAndView("addnew.html");
-        return modelAndView;
+    @GetMapping("/loginpage")
+    public String login() {
+        return "pages/login-page.html";
     }
 
-    @GetMapping("/go")
-    public ModelAndView addNewProduct() {
-        ModelAndView modelAndView = new ModelAndView("clay_warehouse_menu.html");
-        return modelAndView;
+    @PostMapping("/create")
+    public String addNewUser(@Valid @ModelAttribute(name = "newUser") User newUser, BindingResult result) {
+
+        if (result.hasErrors()){
+            return "pages/login-page.html";
+        }
+
+        if (!result.hasErrors()) {
+            service.createPersona(newUser.getUsername(), newUser.getPassword());
+        }
+        return "pages/login-page.html";
     }
 
-//    @GetMapping
-//    public String viewCasePage() {
-//        return "redirect:/casePage";
-//    }
-//
-//    @GetMapping
-//    public String viewCablePage() {
-//        return "redirect:/cablePage";
-//    }
-//
-//    @GetMapping
-//    public String viewChargingPage() {
-//        return "redirect:/chargingPage";
+//    @PostMapping("/create")
+//    public String create(@RequestParam(name = "username") String username,
+//                         @RequestParam(name = "password") String password) {
+//        service.createPersona(username, password);
+//        return "login-page.html";
 //    }
 
 }

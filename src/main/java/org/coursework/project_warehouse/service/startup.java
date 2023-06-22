@@ -12,14 +12,17 @@ import org.coursework.project_warehouse.repository.CaseRepository;
 import org.coursework.project_warehouse.repository.ChargerRepository;
 import org.coursework.project_warehouse.repository.OrderRepository;
 import org.coursework.project_warehouse.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 
 @RequiredArgsConstructor
 
 @Service
 public class startup {
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final CartRepository cartRepository;
     private final CableRepository cableRepository;
@@ -27,22 +30,24 @@ public class startup {
     private final ChargerRepository chargerRepository;
     private final OrderRepository orderRepository;
 
-//    @PostConstruct
-//    public void init() {
+    @PostConstruct
+    public void init() {
 //        User admin = User.builder()
-//                .auth("admin")
-//                .password("admin")
+//                .auth("ROLE_ADMIN")
+//                .password(passwordEncoder.encode("admin"))
+//                .cart(new ArrayList<>())
 //                .username("admin")
 //                .build();
 //        User adminRs = userRepository.save(admin);
-//
+////
 //        CartEntity cartAdmin = CartEntity.builder()
 //                .persons(adminRs)
 //                .aStatus(true)
 //                .total(0.00)
 //                .build();
+////
 //        CartEntity basketRs = cartRepository.save(cartAdmin);
-//
+////
 //        CableEntity cable1 = CableEntity.builder()
 //                .type("Cable")
 //                .brand("Ugreen")
@@ -91,5 +96,5 @@ public class startup {
 //                .build();
 //        chargerRepository.save(charger);
 //
-//    }
+    }
 }
